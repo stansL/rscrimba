@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MyApp from './components/MyApp'
+// import MyApp from './components/MyApp'
+import ContactList from './components/ContactList';
 import './index.css';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
@@ -14,4 +15,4 @@ import 'bootstrap/dist/css/bootstrap.css';
 // serviceWorker.unregister();
 
 
-ReactDOM.render(<MyApp />, document.getElementById('root'));
+ReactDOM.render(<ContactList />, document.getElementById('root'));
