@@ -1,12 +1,13 @@
 import React from 'react';
 
-const TodoItem = () => {
+const TodoItem = (props) => {
+    let todo = props.todo;
     return (
-        <p><input type='checkbox' />{' '}ToDo Item 1 
-        <button style={btnStyle} >x</button>
-        
+        <p>
+            <input type='checkbox' checked = {todo.completed} onChange = {props.checkItem}/>{' '} {todo.text}
+            <button style={btnStyle} >x</button>
         </p>
-        
+
     );
 
 };
