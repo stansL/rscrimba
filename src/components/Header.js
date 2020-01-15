@@ -18,7 +18,7 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            isLoggedIn: false
         }
     }
 
@@ -31,7 +31,10 @@ class Header extends React.Component {
                     <a className="nav-link" href="#">Link</a>
                     <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
                 </nav>
+                {/* {this.state.isLoggedIn && <div style={{ float: "right" }}>You are  </div>} */}
+                 <div style={{ float: "right" }}>You are currently logged {this.state.isLoggedIn ? "in": "out"} </div>
             </header>
+
         );
     }
 }

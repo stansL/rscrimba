@@ -27,6 +27,9 @@ import todosData from './todosData';
 class MainContent extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            todosItems: []
+        }
     }
     checkItem() {
 
@@ -36,15 +39,22 @@ class MainContent extends React.Component {
         const firstName = 'React';
         const lastName = 'Native';
 
-        let todosItems = todosData.map(todoItem => <TodoItem key={todoItem.id} todo={todoItem} checkItem={this.checkItem} />);
         return (
             <main>
                 <h1> {firstName} {lastName}</h1>
                 <p>A software eng with a potential that he has not harnessed in a long time and is ready to explore</p>
                 <h3>Todo List</h3>
-                {todosItems}
+                {this.state.todosItems}
             </main>
         );
+
+    }
+
+    componentDidMount(){
+        let todosItems = todosData.map(todoItem => <TodoItem key={todoItem.id} todo={todoItem} checkItem={this.checkItem} />);
+        this.setState({
+            todosItems : todosItems
+        })
 
     }
 }
