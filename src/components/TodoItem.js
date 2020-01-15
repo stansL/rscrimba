@@ -2,9 +2,10 @@ import React from 'react';
 
 const TodoItem = (props) => {
     let todo = props.todo;
+    const {id,text,completed} = todo;
     return (
         <p>
-            <input type='checkbox' checked = {todo.completed} onChange = {props.checkItem}/>{' '} {todo.text}
+            <input type='checkbox' checked = {completed} onChange = {(event) => props.markComplete(id)} />{' '} {text}
             <button style={btnStyle} >x</button>
         </p>
 

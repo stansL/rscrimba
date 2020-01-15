@@ -30,9 +30,20 @@ class MainContent extends React.Component {
         this.state = {
             todosItems: []
         }
+        this.markComplete = this.markComplete.bind(this);
     }
-    checkItem() {
 
+    markComplete = (id) => {
+        const newTodosData = todosData.map(todo => {
+            if (todo.id === id) {
+                todo.completed = !todo.completed;
+            }
+            return todo;
+        });
+
+        this.setState({
+            todosItems: this.renderTodos(newTodosData)
+        });
     }
 
     render() {
@@ -50,12 +61,17 @@ class MainContent extends React.Component {
 
     }
 
-    componentDidMount(){
-        let todosItems = todosData.map(todoItem => <TodoItem key={todoItem.id} todo={todoItem} checkItem={this.checkItem} />);
+    componentDidMount() {
+        let todosItems = this.renderTodos(todosData);
         this.setState({
-            todosItems : todosItems
+            todosItems: todosItems
         })
 
+    }
+
+
+    renderTodos(todosData){
+        return todosData.map(todoItem => <TodoItem key={todoItem.id} todo={todoItem} markComplete={this.markComplete} />)
     }
 }
 
