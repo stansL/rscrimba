@@ -2,16 +2,23 @@ import React from 'react';
 
 const TodoItem = (props) => {
     let todo = props.todo;
-    const {id,text,completed} = todo;
+    const { id, title, completed } = todo;
+    const toDoStyle = {
+        fontStyle: 'italic',
+        color: '#cdcdcd',
+        textDecoration: 'line-through'
+    }
+
     return (
-        <p>
-            <input type='checkbox' checked = {completed} onChange = {(event) => props.markComplete(id)} />{' '} {text}
+        <p style={completed ? toDoStyle : null}>
+            <input type='checkbox' checked={completed} onChange={(event) => props.markComplete(id)} />{' '} {title}
             <button style={btnStyle} >x</button>
         </p>
-
     );
 
 };
+
+
 
 const btnStyle = {
     background: '#ff0000',

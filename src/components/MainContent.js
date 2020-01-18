@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import todosData from './todosData';
+// import todosData from './todosData';
 
 
 
@@ -28,13 +28,15 @@ class MainContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            todosItems: []
+            rawData: [],
+            todosItems: [],
+            loading: false
         }
         this.markComplete = this.markComplete.bind(this);
     }
 
     markComplete = (id) => {
-        const newTodosData = todosData.map(todo => {
+        const newTodosData = this.state.rawData.map(todo => {
             if (todo.id === id) {
                 todo.completed = !todo.completed;
             }
@@ -55,22 +57,34 @@ class MainContent extends React.Component {
                 <h1> {firstName} {lastName}</h1>
                 <p>A software eng with a potential that he has not harnessed in a long time and is ready to explore</p>
                 <h3>Todo List</h3>
-                {this.state.todosItems}
+                {this.state.loading ? "Loading................" : this.state.todosItems}
             </main>
         );
 
     }
 
     componentDidMount() {
-        let todosItems = this.renderTodos(todosData);
         this.setState({
-            todosItems: todosItems
-        })
+            loading: true
+        });
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                    rawData: json,
+                    loading: false
+                });
+                let todosItems = this.renderTodos(json);
+                this.setState({
+                    todosItems: todosItems
+                })
+
+            });
 
     }
 
 
-    renderTodos(todosData){
+    renderTodos(todosData) {
         return todosData.map(todoItem => <TodoItem key={todoItem.id} todo={todoItem} markComplete={this.markComplete} />)
     }
 }

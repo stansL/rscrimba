@@ -58,7 +58,6 @@ Updating
             -and whatever value we returned from getSnapshotBeforeUpdate
 
 
-
 unmounting
     componentWillUnmount
         -you can cancel any outgoing network requests, or
@@ -74,6 +73,5 @@ errors
         - we can now perform any side effects, like logging the error
         -Common use case: Catching and logging errors
     
-
-
+        
 */
