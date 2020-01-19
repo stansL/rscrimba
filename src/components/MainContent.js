@@ -65,20 +65,18 @@ class MainContent extends React.Component {
 
     componentDidMount() {
         this.setState({
-            loading: true
+            loading: true,
+            rawData:'',
+            todosItems:[]
         });
         fetch('https://jsonplaceholder.typicode.com/todos')
             .then(response => response.json())
             .then(json => {
                 this.setState({
                     rawData: json,
-                    loading: false
+                    loading: false,
+                    todosItems: this.renderTodos(json)
                 });
-                let todosItems = this.renderTodos(json);
-                this.setState({
-                    todosItems: todosItems
-                })
-
             });
 
     }
