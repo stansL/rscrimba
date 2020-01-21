@@ -6,7 +6,7 @@ class Forms extends React.Component {
         this.state = {
             firstName: '',
             lastName: '',
-            isFriendly: false,
+            dietaryRestrictions: [],
             gender: 'Male',
             textInput:'',
             favFruit:''
@@ -45,7 +45,10 @@ class Forms extends React.Component {
                 <br />
 
                 <label>
-                    <input type="checkbox" checked={this.state.isFriendly} onChange={this.processInput} name="isFriendly" /> Some Tst
+                    <input type="checkbox" checked={this.state.isFriendly} onChange={this.processInput} name="dietaryRestrictions" /> Some Tst
+                    <input type="checkbox" checked={this.state.isFriendly} onChange={this.processInput} name="dietaryRestrictions" /> Some Tst
+                    <input type="checkbox" checked={this.state.isFriendly} onChange={this.processInput} name="dietaryRestrictions" /> Some Tst
+                    <input type="checkbox" checked={this.state.isFriendly} onChange={this.processInput} name="dietaryRestrictions" /> Some Tst
                 </label>
                 <br />
                 <label>
@@ -58,6 +61,7 @@ class Forms extends React.Component {
                 <label>
                     Pick your favorite flavor:
                     <select value={this.state.favFruit} onChange={this.processInput} name = "favFruit">
+                        <option value="">--Choose Fruit--</option>
                         <option value="grapefruit">Grapefruit</option>
                         <option value="lime">Lime</option>
                         <option value="coconut">Coconut</option>
